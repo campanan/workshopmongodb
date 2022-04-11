@@ -1,5 +1,6 @@
 package com.netocampana.workshopmongodb.services;
 
+import com.netocampana.workshopmongodb.dto.UserDTO;
 import com.netocampana.workshopmongodb.entities.User;
 import com.netocampana.workshopmongodb.repositories.UserRepository;
 import com.netocampana.workshopmongodb.exceptions.ObjectNotFoundException;
@@ -25,4 +26,15 @@ public class UserService {
                 -> new ObjectNotFoundException("Objecto não encontrado"));
 
     }
+
+    public User insertUser(User obj){
+        return userRepository.insert(obj);
+    }
+
+    public User fromDTO(UserDTO objDto){
+        return new User(objDto.getId(),objDto.getName(), objDto.getEmail());
+    }
+
+
+
 }
